@@ -1,6 +1,14 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
+    application
     kotlin("jvm") version "1.4.10"
     id("io.gitlab.arturbosch.detekt") version "1.6.0"
+    id("com.github.johnrengelman.shadow") version "6.1.0"
+}
+
+application {
+    mainClassName = "com.example.ApplicationKt"
 }
 
 group = "org.example"
@@ -22,4 +30,10 @@ dependencies {
 detekt {
     failFast = true // fail build on any finding
     buildUponDefaultConfig = true // preconfigure defaults
+}
+
+tasks.withType<ShadowJar> {
+    archiveBaseName.set("application")
+    archiveClassifier.set("")
+    archiveVersion.set("")
 }
