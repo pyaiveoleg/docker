@@ -9,4 +9,4 @@ RUN ./gradlew build
 # Stage 2: Run the built jar in alpine
 FROM openjdk:8-jre-alpine
 COPY --from=builder ~/applicationRepo/build/libs/Docker-1.0-SNAPSHOT.jar application.jar
-CMD ["java", "-jar", "application.jar"]
+CMD ["java", "-server", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-XX:InitialRAMFraction=2", "-XX:MinRAMFraction=2", "-XX:MaxRAMFraction=2", "-XX:+UseG1GC", "-XX:MaxGCPauseMillis=100", "-XX:+UseStringDeduplication", "-jar", "application.jar"]
