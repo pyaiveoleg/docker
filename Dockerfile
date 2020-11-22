@@ -9,4 +9,4 @@ RUN ./gradlew build
 # Stage 2: Run the built jar in alpine
 FROM openjdk:8-jre-alpine
 COPY --from=builder ~/applicationRepo/build/libs/Docker-1.0-SNAPSHOT.jar application.jar
-ENTRYPOINT ["java", "-jar", "application.jar"]
+CMD ["java", "-jar", "application.jar"]
