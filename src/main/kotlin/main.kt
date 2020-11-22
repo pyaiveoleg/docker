@@ -9,8 +9,9 @@ import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 import org.jsoup.Jsoup
 
+private const val port = 8080
 fun main() {
-    val server = embeddedServer(Netty, 8080) {
+    val server = embeddedServer(Netty, port) {
         routing {
             get("/") {
                 val doc = Jsoup.connect("http://bash.org/?random").get()
