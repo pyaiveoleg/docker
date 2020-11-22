@@ -4,7 +4,7 @@ RUN apk update && apk upgrade
 RUN apk add openjdk8
 WORKDIR ~/applicationRepo
 COPY . .
-RUN ./gradlew
+RUN ./gradlew build
 
 # Stage 2: Run the built jar in alpine
 FROM openjdk:8-jre-alpine

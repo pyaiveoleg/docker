@@ -1,7 +1,6 @@
 package com.example
 
 import io.ktor.application.call
-import io.ktor.application.Application
 import io.ktor.http.ContentType
 import io.ktor.response.respondText
 import io.ktor.routing.routing
@@ -12,7 +11,7 @@ import org.jsoup.Jsoup
 
 private const val PORT = 8080
 
-fun Application.main() {
+fun main() {
     val server = embeddedServer(Netty, PORT) {
         routing {
             get("/") {
